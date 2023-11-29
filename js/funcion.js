@@ -1,8 +1,7 @@
 async function loadXmlData() {
   let promise = await fetch("/familia.xml");
 
-  if (!promise.ok)
-    promise = await fetch("/summary-xml-example/menu_dinamic.json");
+  if (!promise.ok) promise = await fetch("/summary-xml-example/familia.xml");
 
   let data = await promise.text();
   let xml = new window.DOMParser().parseFromString(data, "text/xml");
