@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Resumen Sobre XMl</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Resumen Sobre XML</h1>
+      <h3>¿Qué es XML?</h3>
+      <p>
+        XML es el acrónimo de Extensible Markup Language, es decir, es
+        <strong
+          >un lenguaje de marcado que define un conjunto dereglas para la
+          codificación de documentos</strong
+        >. ¿Te parece complicado? Entonces,vamos a simplificarlo.
+      </p>
+      <p>
+        El lenguaje de marcado es un conjunto de códigos que se pueden aplicar
+        en el análisis de datos o la lectura de textos creados por computadoras
+        o personas. El lenguaje XML proporciona una plataforma para definir
+        elementos para crear un formato y generar un lenguaje personalizado.
+      </p>
+      <p>
+        Un archivo XML se divide en dos partes: prolog y body. La parte prolog
+        consiste en metadatos administrativos, como declaración XML, instrucción
+        de procesamiento opcional, declaración de tipo de documento y
+        comentarios. La parte del body se compone de dos partes: estructural y
+        de contenido (presente en los textos simples).
+      </p>
+      <p>
+        El diseño XML se centra en la simplicidad, la generalidad y la facilidad
+        de uso y, por lo tanto, se utiliza para varios servicios web. Tanto es
+        así que hay sistemas destinados a ayudar en la definición de lenguajes
+        basados en XML, así como APIs que ayudan en el procesamiento de datos
+        XML - que no deben confundirse con HTML.
+      </p>
+      <h3>¿Y cuáles son las diferencias entre XML y HTML?</h3>
+      <p>
+        Para dejar en claro qué distingue uno del otro, aquí enumeramos las
+        principales diferencias entre XML y HTML:
+      </p>
+      <ul style="width: 60%">
+        <li>
+          El XML es un lenguaje de marcado basado en texto que tiene una
+          estructura de auto-descripción y puede definir efectivamente otro
+          lenguaje de marcado. Por otro lado, el HTML es un lenguaje de mrcado
+          predefinido y tiene una capacidad limitada;
+        </li>
+        <li>
+          El XML proporciona la estructura lógica del documento, mientras que la
+          estructura del HTML está predefinida, utilizando tags heads e body;
+        </li>
+        <li>
+          Cuando se trata de lenguaje, el HTML es insensible a mayúsculas y
+          minúsculas. En cambio, el XML distingue entre mayúsculas y minúsculas;
+        </li>
+        <li>
+          El HTML fue diseñado con un énfasis en las características de
+          <strong> presentación de los datos </strong>
+          . En contraste, el XML es específico de datos;
+        </li>
+        <li>
+          <strong> El XML no permite ningún error en el código. </strong>
+          En contraste, en el HTML, pequeños errores pueden ser descuidados;
+        </li>
+        <li>
+          Los espacios en blanco en el XML se utilizan para un fin específico,
+          pues considera todos los caracteres el HTML, en cambio puede ignorar
+          espacios en blanco;
+        </li>
+        <li>
+          <strong> las tags de XML están necesariamente cerradas, </strong>
+          mientras que en HTML una etiqueta abierta también puede funcionar
+          bastante bien;
+        </li>
+        <li>
+          En XML la sintaxis es de gran importancia. El HTML, por otro lado, no
+          se preocupa mucho por este aspecto.
+        </li>
+      </ul>
+      <h3>Ejemplo de un documento XML</h3>
+      <p>
+        A continuación se muestra un ejemplo para entender la estructura de un
+        documento XML:
+      </p>
+      <pre style="border: 1px solid">
+
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+        &lt;!DOCTYPE familia SYSTEM &quot;familia.dtd&quot;&gt;
+        &lt;familia codigo=&quot;L03-07&quot;&gt;
+            &lt;padre&gt;
+                &lt;nombre&gt;Antonio&lt;/nombre&gt;
+                &lt;apellido&gt;P&eacute;rez&lt;/apellido&gt;
+                &lt;apellido&gt;Rodr&iacute;guez&lt;/apellido&gt;
+                &lt;dni&gt;12.345.678-A&lt;/dni&gt;
+            &lt;/padre&gt;
+            &lt;madre&gt;
+                &lt;nombre&gt;Filomena&lt;/nombre&gt;
+                &lt;apellido&gt;P&eacute;rez&lt;/apellido&gt;
+                &lt;apellido&gt;C&aacute;ntaro&lt;/apellido&gt;
+                &lt;dni&gt;11.222.333-D&lt;/dni&gt;
+            &lt;/madre&gt;
+            &lt;hijos&gt;
+                &lt;hijo pos=&quot;1&quot;&gt;
+                    &lt;nombre&gt;Manuel&lt;/nombre&gt;
+                    &lt;apellido&gt;L&oacute;pez&lt;/apellido&gt;
+                    &lt;apellido&gt;P&eacute;rez&lt;/apellido&gt;
+                    &lt;dni&gt;44.555.666-E&lt;/dni&gt;
+                    &lt;edad&gt;25&lt;/edad&gt;
+                &lt;/hijo&gt;
+                &lt;hijo pos=&quot;2&quot;&gt;
+                    &lt;nombre&gt;Jos&eacute; Antonio&lt;/nombre&gt;
+                    &lt;apellido&gt;L&oacute;pez&lt;/apellido&gt;
+                    &lt;apellido&gt;P&eacute;rez&lt;/apellido&gt;
+                    &lt;edad&gt;15&lt;/edad&gt;
+                &lt;/hijo&gt;
+            &lt;/hijos&gt;
+        &lt;/familia&gt;
+    </pre
+      >
+      <p>Aquí está el ejemplo de código del DTD del documento «familia.dtd»:</p>
+      <pre style="border: 1px solid">
+
+        &lt;!ENTITY % info_familia &quot;(nombre, apellido, apellido, dni?, edad?)&quot;&gt;
+        &lt;!ELEMENT familia (((padre, madre?) | (madre?, padre?) | (padre, padre) | (madre, madre)), hijos)&gt;&lt;!-- cambiar--&gt;
+
+        &lt;!ELEMENT hijos (hijo | hija)+&gt; 
+
+        &lt;!ELEMENT padre %info_familia;&gt;
+        &lt;!ELEMENT madre %info_familia;&gt;
+        &lt;!ELEMENT hijo %info_familia;&gt;
+        &lt;!ELEMENT hija %info_familia;&gt;
+
+
+        &lt;!ELEMENT nombre (#PCDATA)&gt;
+        &lt;!ELEMENT apellido (#PCDATA)&gt;
+        &lt;!ELEMENT dni (#PCDATA)&gt;
+        &lt;!ELEMENT edad (#PCDATA)&gt;
+
+        &lt;!ATTLIST familia codigo ID #REQUIRED&gt;
+        &lt;!ATTLIST hijo pos NMTOKEN #REQUIRED&gt;
+        &lt;!ATTLIST hija pos NMTOKEN #REQUIRED&gt;
+    </pre
+      >
+      <p>
+        Aquí está el ejemplo de código en XML_SCHEMA(XSD) equivalente del DTD
+        «familia.dtd»:
+      </p>
+      <pre style="border: 1px solid">
+
+        &lt;?xml version=&quot;1.0&quot;?&gt;
+        &lt;xs:schema version=&quot;1.0&quot;
+                xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+                elementFormDefault=&quot;qualified&quot;&gt;
+            
+            &lt;!-- elementos simple --&gt;
+            &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;
+            &lt;xs:element name=&quot;apellido&quot; type=&quot;xs:string&quot;/&gt;
+            &lt;xs:element name=&quot;dni&quot;&gt;
+                &lt;xs:simpleType&gt;
+                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+                        &lt;xs:pattern value=&quot;d{2}.d{3}.d{3}-[A-Z]&quot;/&gt;
+                    &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+            &lt;/xs:element&gt; 
+            &lt;xs:element name=&quot;edad&quot; type=&quot;xs:positiveInteger&quot;/&gt;
+            
+            &lt;!-- atributos --&gt;
+            &lt;xs:attribute name=&quot;codigo&quot;&gt;
+                &lt;xs:simpleType&gt;
+                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+                        &lt;xs:pattern value=&quot;[A-Z]d{2}-d{2}&quot;/&gt;
+                    &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+            &lt;/xs:attribute&gt;
+            &lt;xs:attribute name=&quot;pos&quot; &gt;
+                &lt;xs:simpleType &gt;
+                    &lt;xs:restriction base=&quot;xs:positiveInteger&quot;&gt;
+                        &lt;xs:maxInclusive value=&quot;30&quot;/&gt;
+                    &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+            &lt;/xs:attribute&gt;
+            
+            &lt;!-- **************************************
+                    elementos complejos
+            ********************************************--&gt;
+            &lt;xs:element name=&quot;padre&quot; type=&quot;datos_padres&quot;/&gt;
+            &lt;xs:element name=&quot;madre&quot; type=&quot;datos_padres&quot;/&gt;
+            &lt;xs:element name=&quot;hijo&quot; type=&quot;datos_hijos&quot;/&gt;
+            &lt;xs:element name=&quot;hija&quot; type=&quot;datos_hijos&quot;/&gt;
+                
+            
+            &lt;!--tipo complejo definifo por usuario--&gt;
+            &lt;xs:complexType name=&quot;datos_padres&quot;&gt;
+                &lt;xs:sequence&gt;
+                    &lt;xs:element ref=&quot;nombre&quot; /&gt;
+                    &lt;xs:element ref=&quot;apellido&quot; minOccurs=&quot;2&quot; maxOccurs=&quot;2&quot;/&gt;
+                    &lt;xs:element ref=&quot;dni&quot; minOccurs=&quot;0&quot; /&gt;
+                    &lt;xs:element ref=&quot;edad&quot; minOccurs=&quot;0&quot; /&gt;
+                &lt;/xs:sequence&gt;
+            &lt;/xs:complexType&gt;
+            
+            &lt;xs:complexType name=&quot;datos_hijos&quot;&gt;
+                &lt;xs:complexContent&gt;
+                    &lt;xs:extension base=&quot;datos_padres&quot;&gt;
+                        &lt;xs:attribute ref=&quot;pos&quot; use=&quot;required&quot;/&gt;
+                    &lt;/xs:extension&gt;
+                &lt;/xs:complexContent&gt;
+            &lt;/xs:complexType&gt;
+            
+            &lt;!-- elemento complejo hijos --&gt;
+            &lt;xs:element name=&quot;hijos&quot;&gt;
+                &lt;xs:complexType&gt;
+                    &lt;xs:choice  maxOccurs=&quot;unbounded&quot; &gt;
+                        &lt;xs:element ref=&quot;hijo&quot; /&gt; 
+                        &lt;xs:element ref=&quot;hija&quot; /&gt; 
+                    &lt;/xs:choice&gt;
+                &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+            
+            &lt;!--elemento raiz familia--&gt;
+            &lt;xs:element name=&quot;familia&quot;&gt;
+                &lt;xs:complexType&gt;
+                    &lt;xs:sequence&gt;
+                        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;2&quot;&gt; 
+                            &lt;xs:element ref=&quot;padre&quot; /&gt;
+                            &lt;xs:element ref=&quot;madre&quot; /&gt;
+                        &lt;/xs:choice&gt;
+                        &lt;xs:element ref=&quot;hijos&quot; /&gt;
+                    &lt;/xs:sequence&gt;
+                    &lt;xs:attribute ref=&quot;codigo&quot; use=&quot;required&quot;/&gt;
+                &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+        &lt;/xs:schema&gt;
+    </pre
+      >
+
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>DNI</th>
+            <th>Edad</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center">Sin registros</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="/js/funcion.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+body {
+  background-color: antiquewhite;
+}
+
+.container {
+  margin: 0em 5em 5em 5em;
+  padding: 0 15px 15px 15px;
+  background-color: whitesmoke;
+}
+#dataTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataTable td,
+#dataTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#dataTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#dataTable tr:hover {
+  background-color: #ddd;
+}
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #122a21;
+  color: white;
+}
